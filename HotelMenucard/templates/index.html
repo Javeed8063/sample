@@ -1,0 +1,113 @@
+{% load staticfiles %}
+<html>
+<body>
+<form action="/save/" method="post">
+    {% csrf_token %}
+    <table align="center" style="background-color: burlywood ;" cellspacing="0">
+        <tr><th>
+            <table align="center" border="0" cellspacing="0" width="600">
+                <tr>
+                    <th colspan="5" align="center" >
+                        <img src="{% static 'Icon/icon.jpg' %}" width="65" height="65" style="border-radius: 10px;" >
+                        <span style="padding-left:20px;"></span>
+                        <span  style="color: red;font-size: 88px;text-align:left;font-family: Georgia">Hotel J</span>
+                        <p align="right">Time: <span id="time"></span></p>
+                        <script>
+                            var dt = new Date();
+                            document.getElementById("time").innerHTML = dt.toLocaleTimeString();
+                        </script>
+                        <p align="right">Date: <span id="date"></span></p>
+                        <script>
+                            var dt = new Date();
+                            document.getElementById("date").innerHTML = dt.toLocaleDateString();
+                        </script>
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center" style="color: darkblue;font-size: 30px">BreakFast Menucard<br/></td>
+                </tr>
+                 <tr>
+                     <td><br></td>
+                 </tr>
+                 <tr>
+                     <th>
+                         <img src="{% static 'images/idli.jpg' %}" height="90" width="90"><br>
+                         <span>IDLY</span><br>
+                         Rs.20/-<input type="checkbox" name="checks[]" value="20" >
+                     </th>
+                     <th>
+                         <img src="{% static 'images/dosa.jpg' %}"height="90" width="90"><br>
+                         <span>DOSA</span><br>
+                         Rs.30/-<input type="checkbox" name="checks[]" value="30">
+                     </th>
+                     <th>
+                         <img src="{% static 'images/puri.jpg' %}"height="90" width="90"><br>
+                         <span>POORI</span><br>
+                         Rs.30/-<input type="checkbox" name="checks[]" value="30">
+                     </th>
+                     <th >
+                         <img src="{% static 'images/voda.jpg' %}"height="90" width="90"><br>
+                         <span>VADA</span><br>
+                         Rs.25/-<input type="checkbox" name="checks[]" value="25">
+                     </th>
+                     <th>
+                         <img src="{% static 'images/upma.jpg' %}"height="90" width="90"><br>
+                         <span>UPMA</span><br>
+                         Rs.30/-<input type="checkbox" name="checks[]" value="30">
+                     </th>
+                 </tr>
+                 <tr><td><br/><br></td></tr>
+                 <tr>
+                    <th><img src="{% static 'images/mysorebujji.jpg' %}" height="90" width="90"><br>
+                        <span>MYSORE BAJJI</span><br>
+                        Rs.30/-<input type="checkbox" name="checks[]" value="30">
+                    </th>
+                    <th><img src="{% static 'images/setdosa.jpg' %}"height="90" width="90"><br>
+                         <span>SET DOSA</span><br>
+                         Rs.40/-<input type="checkbox" name="checks[]" value="40">
+                    </th>
+                    <th ><img src="{% static 'images/tomatobath.jpg' %}"height="90" width="90"><br>
+                        <span>TAMATO BATH</span><br>
+                        Rs.40/-<input type="checkbox" name="checks[]" value="40">
+                    </th>
+                    <th><img src="{% static 'images/pessarattu.jpg' %}"height="90" width="90"><br>
+                        <span>PESARATTU</span><br>
+                        Rs.40/-<input type="checkbox" name="checks[]" value="40">
+                    </th>
+                    <th><img src="{% static 'images/plaindosa.jpg' %}"height="90" width="90"><br>
+                        <span>PLAIN DOSA</span><br>
+                        Rs.30/-<input type="checkbox" name="checks[]" value="30">
+                    </th>
+                 </tr>
+                <tr><td><br></td></tr>
+                <tr>
+                     <th colspan="2" align="center">
+                         <button type="submit" style="background-color: revert ;font-size: 20px ">Total</button>
+                     </th>
+                </tr>
+                {% if message %}
+                    <tr>
+                        <th colspan="4" align="right" style="font-size: 20px">Amount : {{ message.sum }}</th>
+                    </tr>
+                    <tr>
+                        <th colspan="4" align="right" style="font-size: 20px">Tax 18% : {{ message.tax }}</th>
+                    </tr>
+                    <tr>
+                    <td colspan="4" align="right" style="font-size: 20px">--------------------------</td>
+                    </tr>
+                    <tr>
+                        <th colspan="4" align="right" style="font-size: 20px">Total Amount : {{ message.total }}</th>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="right" style="font-size: 20px">--------------------------</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <br>
+                 </tr>
+            </table>
+        </th></tr>
+    </table>
+</form>
+</body>
+</html>
